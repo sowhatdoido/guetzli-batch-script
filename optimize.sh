@@ -3,18 +3,18 @@
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
-opts=""
+cmd="guetzli "
 target="*.jpg"
 
 while [ ! $# -eq 0 ]
 do
 	case "$1" in
 		--verbose | -v)
-			opts="${opts}--verbose "
+			cmd="${cmd}--verbose "
 			;;
 		--quality | -q)
 			shift
-			opts="${opts}--quality $1 "
+			cmd="${cmd}--quality $1 "
 			shift
 			;;
 		--target | -t)
@@ -38,8 +38,8 @@ rm -rf "${workingPath}/optimized"
 mkdir "${workingPath}/optimized"
 
 for f in ${workingPath}/${target}; do
-	echo "Optimizing - ${f##*/}"
-	guetzli ${opts}${f} "${workingPath}/optimized/${f##*/}"
+	#echo "Optimizing - ${f##*/}"
+	eval ${cmd}"\"${f}\"" "\"${workingPath}/optimized/${f##*/}\""
 done
 
 IFS=$SAVEIFS
