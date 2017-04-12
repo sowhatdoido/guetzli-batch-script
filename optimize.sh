@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
 opts=""
 target="*.jpg"
 
@@ -38,3 +41,5 @@ for f in ${workingPath}/${target}; do
 	echo "Optimizing - ${f##*/}"
 	guetzli ${opts}${f} "${workingPath}/optimized/${f##*/}"
 done
+
+IFS=$SAVEIFS
