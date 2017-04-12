@@ -15,5 +15,7 @@ Install [Guetzli](https://github.com/google/guetzli). Duh.
 
 ### Options
 `--verbose`: Prints Guetzli compression messages to terminal
+
 `--quality`: Parameter to set quality in units equivalent to libjpeg quality
+
 `--target`: Allows you to select a single file to compress instead of running the whole folder
